@@ -384,7 +384,7 @@ namespace yazlab2._1 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class arac2DataTable : global::System.Data.TypedTableBase<arac2Row> {
             
-            private global::System.Data.DataColumn columnıd;
+            private global::System.Data.DataColumn columnid;
             
             private global::System.Data.DataColumn columnaracid;
             
@@ -427,9 +427,9 @@ namespace yazlab2._1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ıdColumn {
+            public global::System.Data.DataColumn idColumn {
                 get {
-                    return this.columnıd;
+                    return this.columnid;
                 }
             }
             
@@ -494,10 +494,10 @@ namespace yazlab2._1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public arac2Row Addarac2Row(int ıd, int aracid, int Expr1, int Expr2) {
+            public arac2Row Addarac2Row(int id, int aracid, int Expr1, int Expr2) {
                 arac2Row rowarac2Row = ((arac2Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ıd,
+                        id,
                         aracid,
                         Expr1,
                         Expr2};
@@ -523,7 +523,7 @@ namespace yazlab2._1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnıd = base.Columns["ıd"];
+                this.columnid = base.Columns["id"];
                 this.columnaracid = base.Columns["aracid"];
                 this.columnExpr1 = base.Columns["Expr1"];
                 this.columnExpr2 = base.Columns["Expr2"];
@@ -532,8 +532,8 @@ namespace yazlab2._1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnıd = new global::System.Data.DataColumn("ıd", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnıd);
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
                 this.columnaracid = new global::System.Data.DataColumn("aracid", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnaracid);
                 this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1587,17 +1587,17 @@ namespace yazlab2._1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int ıd {
+            public int id {
                 get {
                     try {
-                        return ((int)(this[this.tablearac2.ıdColumn]));
+                        return ((int)(this[this.tablearac2.idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("\'arac2\' tablosundaki \'ıd\' sütunun değeri DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("\'arac2\' tablosundaki \'id\' sütunun değeri DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablearac2.ıdColumn] = value;
+                    this[this.tablearac2.idColumn] = value;
                 }
             }
             
@@ -1651,14 +1651,14 @@ namespace yazlab2._1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsıdNull() {
-                return this.IsNull(this.tablearac2.ıdColumn);
+            public bool IsidNull() {
+                return this.IsNull(this.tablearac2.idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetıdNull() {
-                this[this.tablearac2.ıdColumn] = global::System.Convert.DBNull;
+            public void SetidNull() {
+                this[this.tablearac2.idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2311,17 +2311,18 @@ namespace yazlab2._1.DataSet1TableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "arac2";
-            tableMapping.ColumnMappings.Add("ıd", "ıd");
+            tableMapping.ColumnMappings.Add("ıd", "id");
             tableMapping.ColumnMappings.Add("aracid", "aracid");
             tableMapping.ColumnMappings.Add("Expr1", "Expr1");
             tableMapping.ColumnMappings.Add("Expr2", "Expr2");
+            tableMapping.ColumnMappings.Add("id", "id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [arac] ([ıd], [aracid], [ıd], [aracid]) VALUES (@ıd, @aracid, @Expr1," +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [arac] ([id], [aracid], [id], [aracid]) VALUES (@id, @aracid, @Expr1," +
                 " @Expr2)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ıd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ıd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aracid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aracid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Expr1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Expr1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Expr2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Expr2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2331,7 +2332,7 @@ namespace yazlab2._1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["yazlab2_1ConnectionString"].ConnectionString;
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["yazlab2_1ConnectionString1"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2340,10 +2341,10 @@ namespace yazlab2._1.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT arac.*, ıd AS Expr1, aracid AS Expr2\r\nFROM     arac";
+            this._commandCollection[0].CommandText = "SELECT arac.*, id AS Expr1, aracid AS Expr2\r\nFROM     arac";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].Connection = new global::System.Data.SqlClient.SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["yazlab2_1ConnectionString"].ConnectionString);
             this._commandCollection[1].CommandText = "SELECT arac.*, id AS Expr1, aracid AS Expr2\r\nFROM     arac\r\nWhere id=@id";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2442,9 +2443,9 @@ namespace yazlab2._1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> ıd, global::System.Nullable<int> aracid, int Expr1, int Expr2) {
-            if ((ıd.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ıd.Value));
+        public virtual int Insert(global::System.Nullable<int> id, global::System.Nullable<int> aracid, int Expr1, int Expr2) {
+            if ((id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -2984,7 +2985,8 @@ namespace yazlab2._1.DataSet1TableAdapters {
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user", global::System.Data.SqlDbType.NChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "KULLANICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT ID\r\nFROM     TBLUSER\r\nWHERE  (KULLANICI = @user)";
+            this._commandCollection[1].CommandText = "SELECT ID, KULLANICI, SIFRE, tarihc, tarihg FROM TBLUSER WHERE (KULLANICI = @user" +
+                ")";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user", global::System.Data.SqlDbType.NChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "KULLANICI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();

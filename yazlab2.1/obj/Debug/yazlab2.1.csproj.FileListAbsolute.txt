@@ -220,3 +220,13 @@ C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\obj\Debug\yazlab2.1.cspro
 C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\obj\Debug\yazlab2.1.csproj.CoreCompileInputs.cache
 C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\obj\Debug\yazlab2.1.dll
 C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\obj\Debug\yazlab2.1.pdb
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\Pipelines.Sockets.Unofficial.dll
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\StackExchange.Redis.dll
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\System.IO.Pipelines.dll
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\System.Threading.Channels.dll
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\Pipelines.Sockets.Unofficial.xml
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\StackExchange.Redis.xml
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\System.Diagnostics.PerformanceCounter.xml
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\System.IO.Pipelines.xml
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\System.Threading.Channels.xml

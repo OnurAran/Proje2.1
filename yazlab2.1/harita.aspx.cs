@@ -11,6 +11,7 @@ using System.Linq;
 using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 using System.Collections;
+using StackExchange.Redis;
 
 namespace yazlab2._1
 {
@@ -21,13 +22,17 @@ namespace yazlab2._1
         {
             int x = Convert.ToInt32(Request.QueryString["ID"].ToString());
             
-            var streamReader = File.OpenText(@"C:\Kullanıcılar\Onur Aran\Masaüstü/allCars4.csv");
-             var csvReader = new CsvReader(streamReader, CultureInfo.CurrentCulture);
+            var streamReader = File.OpenText(@"C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\allCars4.csv");
+            var csvReader = new CsvReader(streamReader, CultureInfo.CurrentCulture);
             ArrayList tarih = new ArrayList();
             ArrayList lat = new ArrayList();
             ArrayList lng = new ArrayList();
             ArrayList id = new ArrayList();
-        
+
+
+            
+
+
             while (csvReader.Read())
             {
              
@@ -35,8 +40,6 @@ namespace yazlab2._1
                     lat.Add(csvReader.GetField(1));
                     lng.Add(csvReader.GetField(2));
                     id.Add(csvReader.GetField(3));
-                
-               
 
             }
             int j = 0;
@@ -52,7 +55,13 @@ namespace yazlab2._1
             }
           
                 tb.Text += tarih[i-1];
-            
+
+
+
+
+            ConnectionMultiplexer redisCon = ConnectionMultiplexer.Connect("localhost:6379");
+            IDatabase redDb = redisCon.GetDatabase();
+
 
         }
     }
