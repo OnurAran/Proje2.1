@@ -20,6 +20,10 @@ namespace yazlab2._1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            ConnectionMultiplexer redisCon = ConnectionMultiplexer.Connect("localhost:6379");
+            IDatabase redDb = redisCon.GetDatabase();
+
             int x = Convert.ToInt32(Request.QueryString["ID"].ToString());
             
             var streamReader = File.OpenText(@"C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\allCars4.csv");
@@ -29,9 +33,9 @@ namespace yazlab2._1
             ArrayList lng = new ArrayList();
             ArrayList id = new ArrayList();
 
+            string tarihTemp, latTemp, lngTemp, idTemp;
 
-            
-
+            int counter = 0;
 
             while (csvReader.Read())
             {
@@ -40,6 +44,18 @@ namespace yazlab2._1
                     lat.Add(csvReader.GetField(1));
                     lng.Add(csvReader.GetField(2));
                     id.Add(csvReader.GetField(3));
+
+                    tarihTemp = (tarih[counter]).ToString();
+                    latTemp = (lat[counter]).ToString();
+                    lngTemp = (lng[counter]).ToString();
+                    idTemp = (id[counter]).ToString();
+
+
+                    redDb.SetAdd(tarihTemp,idTemp);
+                    redDb.SetAdd(tarihTemp,latTemp);
+                    redDb.SetAdd(tarihTemp, lngTemp);
+
+                    counter++;
 
             }
             int j = 0;
@@ -57,11 +73,11 @@ namespace yazlab2._1
                 tb.Text += tarih[i-1];
 
 
+            
 
+            
 
-            ConnectionMultiplexer redisCon = ConnectionMultiplexer.Connect("localhost:6379");
-            IDatabase redDb = redisCon.GetDatabase();
-
+            
 
         }
     }
