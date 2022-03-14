@@ -58,10 +58,12 @@ li a:hover:not(.active) {
   <li style="float:right"><a class="active" href="WebForm1.aspx">Çıkış yap</a></li>
 </ul>
 
- <form class="box" action="#" method="post" runat="server">
+    <form id="form1" runat="server">
      <asp:TextBox Style="margin:15px" ID="tb" runat="server"></asp:TextBox>
+        <asp:Button ID="Button30" runat="server" OnClick="Button30_Click" Text="30 Dakika" />
+        <asp:Button ID="Button60" runat="server" OnClick="Button60_Click" Text="60 Dakika" />
      <div id="map_canvas" style="width: 700px; height: 500px"></div>
- </form>
+    </form>
 
     
 

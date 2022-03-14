@@ -37,7 +37,7 @@ namespace yazlab2._1
 
 
             
-
+            /*
             ConnectionMultiplexer redisCon = ConnectionMultiplexer.Connect("localhost:6379");
             IDatabase redDb = redisCon.GetDatabase();
 
