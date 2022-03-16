@@ -27,8 +27,10 @@ namespace yazlab2._1
 {
     public partial class harita : System.Web.UI.Page
     {
-        string tarihTemp, latTemp, lngTemp, idTemp;
+        string tarihTemp, latTemp, lngTemp, idTemp, saatTemp;
         int sure = 0;
+        int indexTut;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -71,7 +73,7 @@ namespace yazlab2._1
 
             while (csvReader.Read())
             {
-                
+
                 tarih.Add(csvReader.GetField(0));
                 lat.Add(csvReader.GetField(1));
                 lng.Add(csvReader.GetField(2));
@@ -83,27 +85,82 @@ namespace yazlab2._1
                 lngTemp = (lng[counter]).ToString();
                 idTemp = (id[counter]).ToString();
 
+                saatTemp = tarihTemp;
 
-                for(int o =0; o<sure;o++)
+                string[] date = saatTemp.Split(' ');
+
+                string[] saat = date[1].Split(':');
+
+                int[] clock = Array.ConvertAll<string, int>(saat, int.Parse);
+
+
+                redDb.ListRightPush("title", tarihTemp);
+                redDb.ListRightPush("title", latTemp);
+                redDb.ListRightPush("title", lngTemp);
+                redDb.ListRightPush("title", idTemp);
+
+
+
+
+
+                ArrayList tarihRedis = new ArrayList();
+                ArrayList latRedis = new ArrayList();
+                ArrayList lngRedis = new ArrayList();
+                ArrayList idRedis = new ArrayList();
+
+
+
+
+                for (int o = 0; o < 1079; o = o + 4)
                 {
-                    if(tarihTemp== "2018-10-06 " +)
+                    if (redDb.ListGetByIndex("title", o) == tarihTemp)
                     {
+                        indexTut = o;
+                    }
+                }
+                if (sure == 30)
+                {
+                    for (int a = 0; a < sure; a++)
+                    {
+                        tarihRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                        indexTut++;
+                        latRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                        indexTut++;
+                        lngRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                        indexTut++;
+                        idRedis.Add(redDb.ListGetByIndex("title", indexTut));
 
+                        indexTut -= 7;
+                    }
+                }
+                else if (sure == 60)
+                {
+                    for (int a = 0; a < sure; a++)
+                    {
+                    tarihRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    latRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    lngRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    idRedis.Add(redDb.ListGetByIndex("title", indexTut));
+
+                    indexTut -= 7;
                     }
                 }
 
 
-                redDb.ListRightPush(tarihTemp, latTemp);
-                redDb.ListRightPush(tarihTemp, lngTemp);
-                redDb.ListRightPush(tarihTemp, idTemp);
+
+                for(int c=0;c<2; c++)
+                {
+                    Response.Write(tarihRedis[c]);
+                }
+                
 
 
-                Console.WriteLine(redDb.ListGetByIndex("2018-10-15 13:15", 2));
-                Console.WriteLine(redDb.ListLength("2018-10-15 13:15"));
 
-                var tut = redDb.ListGetByIndex("2018-10-15 13:15", 2);
-                redDb.StringSet("key1", tut);
-                redDb.StringGet("key1");
+
+
                 /*
                     tarihTemp = (tarih[counter]).ToString();
                     latTemp = (lat[counter]).ToString();
@@ -151,7 +208,6 @@ namespace yazlab2._1
             markersOverlay.Markers.Add(marker);
 
         }
-
 
 
 
