@@ -22,6 +22,7 @@ using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using ServiceStack.Redis;
 using ServiceStack.Redis.Generic;
+using System.Data.SqlClient;
 
 namespace yazlab2._1
 {
@@ -30,6 +31,15 @@ namespace yazlab2._1
         string tarihTemp, latTemp, lngTemp, idTemp, saatTemp;
         int sure = 0;
         int indexTut;
+
+        bool guvenlik = false;
+        ArrayList tarihRedis = new ArrayList();
+        ArrayList latRedis = new ArrayList();
+        ArrayList lngRedis = new ArrayList();
+        ArrayList idRedis = new ArrayList();
+
+        SqlConnection baglanti = new SqlConnection(@"Data Source=DESKTOP-T43E7P1;Initial Catalog=yazlab2.1;Integrated Security=True");
+        
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -56,7 +66,28 @@ namespace yazlab2._1
             ConnectionMultiplexer redisCon = ConnectionMultiplexer.Connect("localhost:6379");
             IDatabase redDb = redisCon.GetDatabase();
 
+            
+            
             int x = Convert.ToInt32(Request.QueryString["ID"].ToString());
+
+            SqlCommand komut = new SqlCommand("Select * from TBLUSER", baglanti);
+
+            komut.CommandText = "Select tarihg from TBLUSER where KULLANICI=@KULLANICI";
+
+            komut.Parameters.AddWithValue("@KULLANICI", "ONUR");
+
+            baglanti.Open();
+
+            SqlDataReader dr = komut.ExecuteReader();
+            if (dr.Read())
+            {
+                Response.Write("*-*-*-*-*-*-*" + dr + "*-*-*-*-*-*-*-*-*-*");
+            }
+            baglanti.Close();
+
+
+
+                
 
             var streamReader = File.OpenText(@"C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\allCars7.csv");
             var csvReader = new CsvReader(streamReader, CultureInfo.CurrentCulture);
@@ -103,59 +134,13 @@ namespace yazlab2._1
 
 
 
-                ArrayList tarihRedis = new ArrayList();
-                ArrayList latRedis = new ArrayList();
-                ArrayList lngRedis = new ArrayList();
-                ArrayList idRedis = new ArrayList();
-
-
-
-
-                for (int o = 0; o < 1079; o = o + 4)
-                {
-                    if (redDb.ListGetByIndex("title", o) == tarihTemp)
-                    {
-                        indexTut = o;
-                    }
-                }
-                if (sure == 30)
-                {
-                    for (int a = 0; a < sure; a++)
-                    {
-                        tarihRedis.Add(redDb.ListGetByIndex("title", indexTut));
-                        indexTut++;
-                        latRedis.Add(redDb.ListGetByIndex("title", indexTut));
-                        indexTut++;
-                        lngRedis.Add(redDb.ListGetByIndex("title", indexTut));
-                        indexTut++;
-                        idRedis.Add(redDb.ListGetByIndex("title", indexTut));
-
-                        indexTut -= 7;
-                    }
-                }
-                else if (sure == 60)
-                {
-                    for (int a = 0; a < sure; a++)
-                    {
-                    tarihRedis.Add(redDb.ListGetByIndex("title", indexTut));
-                    indexTut++;
-                    latRedis.Add(redDb.ListGetByIndex("title", indexTut));
-                    indexTut++;
-                    lngRedis.Add(redDb.ListGetByIndex("title", indexTut));
-                    indexTut++;
-                    idRedis.Add(redDb.ListGetByIndex("title", indexTut));
-
-                    indexTut -= 7;
-                    }
-                }
-
-
-
-                for(int c=0;c<2; c++)
-                {
-                    Response.Write(tarihRedis[c]);
-                }
                 
+
+
+
+
+                
+
 
 
 
@@ -175,6 +160,63 @@ namespace yazlab2._1
                 counter++;
 
             }
+
+
+
+            for (int o = 0; o < 1079; o = o + 4)
+            {
+                if (redDb.ListGetByIndex("title", o) == tarihTemp)
+                {
+                    indexTut = o;
+                }
+            }
+            if (sure == 30)
+            {
+                for (int a = 0; a < sure; a++)
+                {
+                    tarihRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    latRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    lngRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    idRedis.Add(redDb.ListGetByIndex("title", indexTut));
+
+                    indexTut -= 7;
+
+                }
+            }
+            else if (sure == 60)
+            {
+                for (int a = 0; a < sure; a++)
+                {
+
+                    tarihRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    latRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    lngRedis.Add(redDb.ListGetByIndex("title", indexTut));
+                    indexTut++;
+                    idRedis.Add(redDb.ListGetByIndex("title", indexTut));
+
+                    indexTut -= 7;
+
+                }
+            }
+
+
+
+            for (int c = 0; c < tarihRedis.Count; c++)
+            {
+                Response.Write(lngRedis[c] + "*"+c+"*");
+                Console.WriteLine("\n");
+            }
+
+
+
+
+
+
             int j = 0;
             int i = 0;
             for (i = 0; i < tarih.Count; i++)
