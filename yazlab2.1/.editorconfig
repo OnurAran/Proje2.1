@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0253: İstenmeden yapılmış olabilecek başvuru karşılaştırması, sağ taraf için atama gerekiyor
+dotnet_diagnostic.CS0253.severity = none

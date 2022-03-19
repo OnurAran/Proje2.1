@@ -252,6 +252,7 @@
     <Content Include="Content\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
+    <Content Include=".editorconfig" />
     <None Include="Content\DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
