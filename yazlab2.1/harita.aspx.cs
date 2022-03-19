@@ -22,8 +22,8 @@ namespace yazlab2._1
     {
 
         string tarihTemp, latTemp, lngTemp, idTemp, saatTemp;
-        int sure = 30;
-        int indexTut;
+        int sure = 30,sayacVeri=0;
+        int indexTut,indexTut2;
         string girisSaati = DateTime.Now.ToString();
         string girisSaati_son;
         string[] girisSaati_saatDakika;
@@ -35,6 +35,7 @@ namespace yazlab2._1
         ArrayList tarihRedis = new ArrayList();
         ArrayList latRedis = new ArrayList();
         string tutSaat;
+        string[] RedisTarih;
 
         protected void Button30_Click(object sender, EventArgs e)
         {
@@ -243,19 +244,21 @@ namespace yazlab2._1
                 if (redDb.ListGetByIndex("title", o) == tarihTemp)
                 {
                     indexTut = o;
+                    indexTut2 = indexTut;
+                    
                 }
             }
             //  if (sure == 30)
             //{
-            for (int c = 0; c < 3867; c++)
+            for (int p = 0; p < int.MaxValue; p++)
             {
-                for(int k = 0; k < tarihGirisSaati.Count; k++) 
+                tutSaat = (redDb.ListGetByIndex("title", indexTut2)).ToString();
+                RedisTarih = tutSaat.Split(' ');
+                for (int k = 0; k < tarihGirisSaati.Count; k++) 
                 {
-                    tutSaat = redDb.ListGetByIndex("title", indexTut);
-                    Response.Write(tutSaat);
-                    string[] RedisTarih = tutSaat.Split(' ');
-                    
-                    if (RedisTarih[1].Equals(tarihGirisSaati[k]))
+                    //Response.Write("*(" + tarihGirisSaati[k] + ")*");
+                    //Response.Write("__(" + RedisTarih[1] + ")__");
+                    if (RedisTarih[1].Equals(tarihGirisSaati[k]) && 5 == Convert.ToInt32(redDb.ListGetByIndex("title", indexTut + 3)))
                     {
                         tarihRedis.Add(redDb.ListGetByIndex("title", indexTut));
                         indexTut++;
@@ -264,18 +267,22 @@ namespace yazlab2._1
                         lngRedis.Add(redDb.ListGetByIndex("title", indexTut));
                         indexTut++;
                         idRedis.Add(redDb.ListGetByIndex("title", indexTut));
-
+                        sayacVeri++;
                         indexTut -= 7;
                     }
-                    else
+                    if(sayacVeri==sure)
                     {
-                        indexTut -= 4;
+                        break;
                     }
                     
                 }
-                
+                if (sayacVeri == sure)
+                {
+                    break;
+                }
+                indexTut2 -= 4;
 
-                
+
 
             }
             //}
@@ -301,8 +308,8 @@ namespace yazlab2._1
 
             for (int c = 0; c < tarihRedis.Count; c++)
             {
-                Response.Write("__("+tarihGirisSaati[c]+")__");
-                Response.Write(lngRedis[c] + "*" + c + "*");
+                Response.Write("İd burası usdaa:"+x+"+++");
+                Response.Write(lngRedis[c] + "*" + c + "*"+idRedis[c]+"**"+tarihRedis[c]+"******");
                 Console.WriteLine("\n");
             }
             redisCon.Close();
