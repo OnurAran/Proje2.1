@@ -254,3 +254,5 @@ C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\ServiceStack.Text.dll
 C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\ServiceStack.Common.xml
 C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\ServiceStack.Redis.xml
 C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\ServiceStack.Text.xml
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\RabbitMQ.Client.dll
+C:\Users\Onur Aran\Documents\GitHub\Proje2.1\yazlab2.1\bin\RabbitMQ.Client.xml
